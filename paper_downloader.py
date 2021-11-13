@@ -2,6 +2,7 @@
 import requests
 import glob
 import zipfile
+import os
 
 def sa2_download():
     SA2urllist = [
@@ -26,7 +27,14 @@ def sa2_unpacker():
         with zipfile.ZipFile(zpath) as z:
             z.extractall('sa2papers/')
 
+def sa2_tidy():
+    fullpaths = glob.glob('sa2papers/**/*.pdf',recursive=1)
+    targets = ['sa2papers\\'+p.split('\\')[-1] for p in fullpaths]
+    for p,n in zip(fullpaths,targets):
+        os.renames(p,n)
+    for p in glob.glob('sa2papers/*.zip'):
+        os.remove(p)
+
 sa2_download()
 sa2_unpacker()
-
-
+sa2_tidy()
