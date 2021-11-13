@@ -5,3 +5,5 @@ Example uses include:
 - Classifying/Labelling questions eg. by chapter.
 - Fitting a model to predict my own performance on a question.
 - Identifying topics/clusters/chapters that I find more challenging and need to study more deeply.
+
+Some of this work has been done previously in ad hoc notebooks. This project aims to formalise some of these tools and add further tools.
