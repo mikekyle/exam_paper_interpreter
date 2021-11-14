@@ -34,6 +34,8 @@ def sa2_tidy():
         os.renames(p,n)
     for p in glob.glob('sa2papers/*.zip'):
         os.remove(p)
+# maybe rename files 
+# could do yyyymm and yyyymmreport
 
 sa2_download()
 sa2_unpacker()
