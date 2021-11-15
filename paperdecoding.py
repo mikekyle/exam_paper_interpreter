@@ -1,3 +1,4 @@
+# %%
 import pdfplumber
 import re
 import numpy as np
@@ -112,3 +113,4 @@ key_words = ['regulation',
             'fundamental',
             'budget',
             'budgetting']
+# %%

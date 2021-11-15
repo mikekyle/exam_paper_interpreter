@@ -3,6 +3,7 @@ import requests
 import glob
 import zipfile
 import os
+import paperdecoding
 
 def sa2_download():
     SA2urllist = [
@@ -37,6 +38,31 @@ def sa2_tidy():
 # maybe rename files 
 # could do yyyymm and yyyymmreport
 
+def sa2_rename():
+    fullpaths = glob.glob('sa2papers/*.pdf')
+    reportflags = [s.__contains__('Report') for s in fullpaths]
+    targets = [s[20:26] for s in fullpaths]
+    for p,n,f in zip(fullpaths,targets,reportflags):
+        if f:
+            os.renames(p,'sa2papers/'+n+'report.pdf')
+        else:
+            os.renames(p,'sa2papers/'+n+'.pdf')
+    os.rename('sa2papers/AM.pdf.pdf','sa2papers/202104.pdf')
+
+def sa2_totxt():
+    fullpaths = glob.glob('sa2papers/*.pdf')
+    outpaths = [p.replace('sa2papers','sa2papers_txt').replace('pdf','txt'
+    )
+    for p in fullpaths]
+    for p,o in zip(fullpaths,outpaths):
+        pages = paperdecoding.gettextpages(p)
+        pages = [x for x in pages if x is not None]
+        paperdecoding.pages_totext(pages,o)
+
+
 sa2_download()
 sa2_unpacker()
 sa2_tidy()
+sa2_rename()
+sa2_totxt()
+# %%
