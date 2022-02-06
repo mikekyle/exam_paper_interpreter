@@ -1,3 +1,4 @@
+#%%
 import numpy as np
 import pandas as pd
 import nltk
@@ -52,3 +53,5 @@ def similar_qs(text,response_no=10,include_identical=True):
         contents += fulldf.answer_text[i].replace('\n','<br>')
         htmlout += collapsep(title,contents)
     return htmlout
+
+# %%
