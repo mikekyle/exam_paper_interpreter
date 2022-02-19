@@ -1,8 +1,11 @@
 exam_timer.py
 paper_reporting.py
 fulldf.csv
+fc2022.pdf
+fcs.txt
 intray/*
 paper_report/*
 sa2papers/*
 sa2papers_txt/*
+scans/*
 *.pyc
